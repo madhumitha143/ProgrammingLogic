@@ -1,0 +1,34 @@
+def is_sublist(sublist, main_list):
+    """
+    Check if sublist is a sublist of main_list.
+
+    Parameters:
+    sublist (list): The potential sublist to check.
+    main_list (list): The list to check against.
+
+    Returns:
+    bool: True if sublist is a sublist of main_list, False otherwise.
+    """
+    if not sublist:
+        return True  # An empty list is a sublist of any list.
+
+    if not main_list:
+        return False  # A non-empty sublist can't be a sublist of an empty list.
+
+    sublist_length = len(sublist)
+    main_list_length = len(main_list)
+
+    for i in range(main_list_length - sublist_length + 1):
+        if main_list[i:i + sublist_length] == sublist:
+            return True
+
+    return False
+
+
+# Example usage
+main_list = [1, 2, 3, 4, 5, 6, 7]
+sublist1 = [2, 3, 4]
+sublist2 = [5, 8]
+
+print(is_sublist(sublist1, main_list))  # Output: True
+print(is_sublist(sublist2, main_list))  # Output: False
